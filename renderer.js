@@ -24,10 +24,13 @@ if (submitBtnDom) {
     if (loadingSpinnerDom) {
       loadingSpinnerDom.style.display = "none";
     }
-
-    console.log("submitMsg", submitMsgInfo.message);
-    if (submitMsgDom) {
-      submitMsgDom.innerText = submitMsgInfo.message;
+    // 根據 submitMsgInfo 中的 error 屬性顯示相應的訊息
+    if ("error" in submitMsgInfo && submitMsgDom) {
+      submitMsgDom.innerText = "訂單失敗: " + submitMsgInfo.error;
+      submitMsgDom.className = "error"; // 添加失敗樣式
+    } else {
+      submitMsgDom.innerText = "訂單成功: " + submitMsgInfo.message;
+      submitMsgDom.className = "success"; // 添加成功樣式
     }
 
     // 顯示提交按鈕（如果需要恢復按鈕顯示，取消註解）

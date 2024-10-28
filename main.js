@@ -21,14 +21,10 @@ const createWindow = () => {
   win.loadFile("index.html");
 };
 async function submitForm() {
-  // new Promise((resolve) => {
-  //   setTimeout(() => {
-  //     // resolve({ message: "success" });
-  //   }, 3000); // 延遲 3 秒
-  // });
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve({ message: "success" });
+      // resolve({ error: "something went wrong" });
     }, 3000); // 延遲 3 秒
   });
 }
