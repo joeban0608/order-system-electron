@@ -1,0 +1,23 @@
+{
+  "name": "order-system-electron",
+  "version": "1.0.0",
+  "description": "order system pratice",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joeban0608/order-system-electron.git"
+  },
+  "author": "joeban",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joeban0608/order-system-electron/issues"
+  },
+  "homepage": "https://github.com/joeban0608/order-system-electron#readme",
+  "devDependencies": {
+    "electron": "^33.0.2"
+  }
+}
