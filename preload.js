@@ -9,5 +9,5 @@ contextBridge.exposeInMainWorld("versions", {
 
 contextBridge.exposeInMainWorld("electronAPI", {
   getOrder: (orderInfo) => ipcRenderer.send("get-order", orderInfo),
-  submitForm: () => ipcRenderer.invoke("form:submit"),
+  submitForm: () => ipcRenderer.invoke("form:submit", orderInfo),
 });

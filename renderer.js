@@ -6,9 +6,19 @@ const orderFormDom = document.getElementById("orderForm");
 const submitBtnDom = document.getElementById("submit-btn");
 const submitMsgDom = document.getElementById("submit-msg");
 const loadingSpinnerDom = document.getElementById("loading-spinner");
-
+if (orderFormDom) {
+  orderFormDom.addEventListener("submit", function (event) {
+    event.preventDefault();
+    const order = {
+      name: document.getElementById("name").value,
+      meal: document.getElementById("meal").value,
+      extra: document.getElementById("extra").value,
+    };
+    window.electronAPI.getOrder(order); // IPC 透過 electronAPI 保存訂單
+  });
+}
 if (submitBtnDom) {
-  submitBtnDom.addEventListener("click", async () => {
+  submitBtnDom.addEventListener("submit", async () => {
     // 隱藏提交按鈕
     submitBtnDom.style.display = "none";
 
