@@ -1,3 +1,4 @@
+const { ipcMain } = require("electron");
 const { app, BrowserWindow } = require("electron/main");
 const path = require("node:path");
 
@@ -9,13 +10,24 @@ const createWindow = () => {
       preload: path.join(__dirname, "preload.js"),
     },
   });
+  ipcMain.on("get-order", (event, oderInfo) => {
+    console.log("oderInfo", oderInfo);
+    const webContents = event.sender;
+    const win = BrowserWindow.fromWebContents(webContents);
+    console.log("win", win);
+    // win.setTitle(title);
+  });
 
   win.loadFile("index.html");
 };
+async function submitForm() {
+  return { message: "success" };
+}
 
 app.whenReady().then(() => {
-  createWindow();
+  ipcMain.handle("form:submit", submitForm);
 
+  createWindow();
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) {
       createWindow();
